@@ -52,6 +52,11 @@ impl Item
     {
         self.damage
     }
+
+    pub fn get_name(&self) -> &'static str
+    {
+        self.name
+    }
 }
 
 impl fmt::Debug for Item

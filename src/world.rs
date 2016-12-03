@@ -88,6 +88,23 @@ pub fn tile_exists(map: &Vec<tiles::Room>, x: i32, y: i32) -> Option<&tiles::Roo
     return None;
 }
 
+pub fn mut_tile_exists(map: &mut Vec<tiles::Room>, x: i32, y: i32) -> Option<&mut tiles::Room>
+{
+    for room in map
+    {
+        let room_x = room.position.x;
+        let room_y = room.position.y;
+        let room_name = room.name;
+        {
+            if (room_x == x) & (room_y == y) & (room_name != "EMPTY")
+            {
+                return Some(room);
+            }
+        }
+    }
+    return None;
+}
+
 pub fn tile_in_existence(map: &Vec<tiles::Room>, x: i32, y: i32) -> bool
 {
     match tile_exists(map, x, y)

@@ -4,7 +4,7 @@ use std::fmt;
 #[derive(Clone)]
 pub struct Enemy
 {
-    name: &'static str,
+    pub name: &'static str,
     pub hp: i32,
     pub damage: i32,
 }
@@ -28,7 +28,7 @@ impl Enemy
 
     pub fn new_giant_spider() -> Enemy
     {
-        Enemy::new("Giant Spider", 10, 2)
+        Enemy::new("Giant Spider", 50, 2)
     }
 
     pub fn new_ogre() -> Enemy
@@ -46,9 +46,9 @@ impl Enemy
         self.name
     }
 
-    pub fn inflict_damage(&self, damage: i32) -> Enemy
+    pub fn inflict_damage(&mut self, damage: i32)
     {
-        Enemy::new(self.name, self.hp-damage, self.damage)
+        self.hp -= damage;
     }
 }
 

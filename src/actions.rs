@@ -5,7 +5,7 @@ use world;
 use tiles;
 
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct Action
 {
     pub name: &'static str,
@@ -55,13 +55,12 @@ impl Action
                 return true;
             },
             "a"|"A"|"Attack"|"attack" => {
-                let x = player.position.x;
-                let y = player.position.y;
-                let tile = world::tile_exists(map, x, y).unwrap();
-                {
-                    player.attack(&tile.enemy);
-                    return true;
-                }
+
+                // PROBLEM
+                let p_x = player.position.x;
+                let p_y = player.position.y;
+                player.attack(world::mut_tile_exists(map, p_x, p_y).unwrap());
+                return true;
             },
             _ =>
             {

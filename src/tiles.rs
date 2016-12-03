@@ -204,19 +204,19 @@ impl Room
     pub fn adjacent_moves(&self, map: &Vec<Room>) -> Vec<actions::Action>
     {
         let mut moves: Vec<actions::Action> = Vec::with_capacity(4);
-        if (self.position.x+1 < world::get_x_limit(map)) & world::tile_in_existence(map, self.position.x+1, self.position.y)
+        if (self.position.x+1 <= world::get_x_limit(map)) & world::tile_in_existence(map, self.position.x+1, self.position.y)
         {
             moves.push(actions::Action::new("Move east", "e"));
         }
-        if (self.position.x-1 > 0) & world::tile_in_existence(map, self.position.x-1, self.position.y)
+        if (self.position.x-1 >= 0) & world::tile_in_existence(map, self.position.x-1, self.position.y)
         {
             moves.push(actions::Action::new("Move west", "w"));
         }
-        if (self.position.y-1 > 0) & world::tile_in_existence(map, self.position.x, self.position.y-1)
+        if (self.position.y-1 >= 0) & world::tile_in_existence(map, self.position.x, self.position.y-1)
         {
             moves.push(actions::Action::new("Move north", "n"));
         }
-        if (self.position.y < world::get_y_limit(map)) & world::tile_in_existence(map, self.position.x, self.position.y+1)
+        if (self.position.y <= world::get_y_limit(map)) & world::tile_in_existence(map, self.position.x, self.position.y+1)
         {
             moves.push(actions::Action::new("Move south", "s"));
         }

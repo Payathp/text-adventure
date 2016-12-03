@@ -79,7 +79,7 @@ impl Player
         &self.position
     }
 
-    pub fn attack(&mut self, enemy: &enemies::Enemy)
+    pub fn attack(&mut self, tile: &mut tiles::Room)
     {
         let mut best_weapon = &items::Item::empty_item();
         for item in &self.inventory
@@ -90,15 +90,15 @@ impl Player
             }
         }
 
-        println!("You use {} against {}!", best_weapon, enemy.get_name());
-        enemy.inflict_damage(best_weapon.damage);
-        if !enemy.is_alive()
+        println!("You use {} against {}!", best_weapon.get_name(), tile.enemy.name);
+        tile.enemy.inflict_damage(best_weapon.damage);
+        if !tile.enemy.is_alive()
         {
-            println!("You killed {}!", enemy.get_name());
+            println!("You killed {}!", tile.enemy.name);
         }
         else
         {
-            println!("{} HP is {}", enemy.get_name(), enemy.hp);
+            println!("{} HP is {}", tile.enemy.name, tile.enemy.hp);
         }
     }
 
