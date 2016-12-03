@@ -84,7 +84,7 @@ impl Player
         let mut best_weapon = &items::Item::empty_item();
         for item in &self.inventory
         {
-            if item.get_damage() > best_weapon.get_damage()
+            if item.damage > best_weapon.damage
             {
                 best_weapon = item;
             }

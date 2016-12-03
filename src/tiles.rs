@@ -235,7 +235,7 @@ impl Room
         }
         else
         {
-            moves =self.adjacent_moves(map);
+            moves = self.adjacent_moves(map);
             moves.push(actions::Action::new("View inventory", "i"));
             return moves;
         }

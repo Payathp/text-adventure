@@ -2,7 +2,6 @@ use std::io;
 use world;
 use player;
 use actions;
-use tiles;
 
 /*
 pub struct GameManager

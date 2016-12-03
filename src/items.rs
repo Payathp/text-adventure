@@ -4,7 +4,7 @@ use std::iter;
 #[derive(Clone)]
 pub struct Item
 {
-    name: &'static str,
+    pub name: &'static str,
     description: &'static str,
     pub value: u32,
     pub damage: i32,
